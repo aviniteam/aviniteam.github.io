@@ -2,23 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team 2</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Times New Roman', serif;
-            margin: 0;
-            padding: 40px;
             background-color: #121212;
             color: #e0e0e0;
             line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
         .header {
             display: flex;
             align-items: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             border-bottom: 1px solid #333333;
             padding-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .logo {
@@ -28,16 +42,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 40px;
             font-family: 'Times New Roman', serif;
             font-size: 1.2em;
             letter-spacing: 2px;
             color: #ffffff;
+            flex-shrink: 0;
         }
 
         .nav-buttons {
             display: flex;
-            gap: 30px;
+            gap: 20px;
         }
 
         button {
@@ -51,6 +65,7 @@
             font-size: 1em;
             letter-spacing: 1px;
             position: relative;
+            white-space: nowrap;
         }
 
         button::after {
@@ -83,8 +98,8 @@
 
         .content {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
             padding: 20px 0;
         }
 
@@ -92,6 +107,9 @@
             background-color: #1e1e1e;
             padding: 20px;
             transition: transform 0.3s ease, background-color 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .person-card:hover {
@@ -101,7 +119,7 @@
 
         .person-image {
             width: 100%;
-            height: 400px;
+            aspect-ratio: 3/4;
             object-fit: cover;
             margin-bottom: 20px;
             filter: grayscale(100%) brightness(0.8);
@@ -124,40 +142,107 @@
             color: #b0b0b0;
             line-height: 1.8;
             font-size: 0.95em;
+            flex-grow: 1;
         }
 
+        /* Tablet Styles */
         @media (max-width: 768px) {
-            body {
-                padding: 20px;
+            .container {
+                padding: 15px;
+            }
+
+            .header {
+                justify-content: space-between;
+                margin-bottom: 30px;
+            }
+
+            .content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .person-card {
+                padding: 15px;
+            }
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
             }
 
             .header {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
+                align-items: stretch;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .logo {
+                margin: 0 auto;
             }
 
             .nav-buttons {
+                justify-content: center;
                 width: 100%;
             }
 
             button {
                 flex: 1;
-                text-align: center;
+                padding: 10px 15px;
+                font-size: 0.9em;
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .person-name {
+                font-size: 1.2em;
+            }
+
+            .person-bio {
+                font-size: 0.9em;
+            }
+
+            .person-image {
+                aspect-ratio: 1/1;
+            }
+        }
+
+        /* For very small screens */
+        @media (max-width: 320px) {
+            .container {
+                padding: 8px;
+            }
+
+            .logo {
+                width: 100px;
+                height: 50px;
+                font-size: 1em;
+            }
+
+            button {
+                padding: 8px 12px;
+                font-size: 0.85em;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">Team 2</div>
-        <div class="nav-buttons">
-            <button onclick="showSection('speakers')" id="speakersBtn">Speakers</button>
-            <button onclick="showSection('team')" id="teamBtn">Team</button>
+    <div class="container">
+        <div class="header">
+            <div class="logo">Team 2</div>
+            <div class="nav-buttons">
+                <button onclick="showSection('speakers')" id="speakersBtn">Speakers</button>
+                <button onclick="showSection('team')" id="teamBtn">Team</button>
+            </div>
         </div>
+        
+        <div id="content" class="content"></div>
     </div>
-    
-    <div id="content" class="content"></div>
 
     <script>
         const speakers = [
@@ -230,7 +315,8 @@
         // Show speakers section by default
         showSection('speakers');
     </script>
+     <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.in/widget?wc=siq5a5a8fdf3044ffa89e92e1c3c2151bfaea3d5b2d7e7d4330b0dc3b488e29a7f6" defer></script>
 
-<script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.in/widget?wc=siq5a5a8fdf3044ffa89e92e1c3c2151bfaea3d5b2d7e7d4330b0dc3b488e29a7f6" defer></script>
 </body>
 </html>
+
